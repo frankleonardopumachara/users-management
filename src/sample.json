@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "title": "Aliens",
+        "director": "james",
+        "year": "1986",
+        "rating": "8.5"
+    },
+    {
+        "id": 2,
+        "title": "Suits",
+        "director": "Brayan Taylor",
+        "year": "2004",
+        "rating": "5.5"
+    }
+]
