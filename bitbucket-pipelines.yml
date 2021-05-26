@@ -12,6 +12,7 @@ pipelines:
             caches:
               - node
             script:
+              - apt-get install zip
               - npm install
               - npm install typescript -g
               - npm run build
