@@ -15,5 +15,19 @@ pipelines:
               - npm install
               - npm install typescript -g
               - npm run build
+              - zip -r application.zip . -x node_modules/\* src/\* .git/\* 
             artifacts:
-              - dist/**
+              - application.zip
+        - step:
+                name: Deploy
+                deployment: test
+                script:
+                  - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.7
+                    variables:
+                      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                      AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                      APPLICATION_NAME: $APPLICATION_NAME
+                      ENVIRONMENT_NAME: $ENVIRONMENT_NAME
+                      ZIP_FILE: 'application.zip'
+                      WAIT: 'true'
