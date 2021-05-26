@@ -13,6 +13,7 @@ pipelines:
               - node
             script:
               - npm install
+              - npm install typescript -g
               - npm run build
             artifacts:
               - dist/**
