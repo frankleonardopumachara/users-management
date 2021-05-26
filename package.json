@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon src/main.ts",
+    "dev": "nodemon src/main.ts",
+    "start:dev": "SET PORT=5000 && npm run dev",
     "start": "node ./dist/main.js",
     "build": "tsc -p ."
   },
