@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \\\"Error: no tests specified\\\" && exit 1",
     "dev": "nodemon src/main.ts",
     "start:dev": "SET PORT=5000 && npm run dev",
     "start": "node ./dist/main.js",
@@ -14,13 +14,18 @@
   "license": "ISC",
   "dependencies": {
     "@mysql/xdevapi": "^8.0.23",
+    "@types/mysql": "^2.15.19",
+    "@types/sequelize": "^4.28.10",
+    "colors": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-request-id": "^1.4.1",
     "express-session": "^1.17.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "node-fetch": "^2.6.1"
+    "mysql2": "^2.3.0",
+    "node-fetch": "^2.6.1",
+    "sequelize": "^6.6.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",

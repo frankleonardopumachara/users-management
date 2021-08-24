@@ -1,5 +1,5 @@
-import { Application, NextFunction, Request, Response } from "express";
-import { CommonRoutes } from "../common/routes/common.routes";
+import {Application, NextFunction, Request, Response} from "express";
+import {CommonRoutes} from "../common/routes/common.routes";
 import userController from "./controllers/user.controller";
 import usersMiddleware from "./middleware/users.middleware";
 
@@ -13,8 +13,6 @@ export class UsersRoutes extends CommonRoutes {
         this.app.route('/users')
             .get(userController.listUsers)
             .post(
-                usersMiddleware.validateRequiredUserBodyFields,
-                usersMiddleware.validateSameEmailDoesntExist,
                 userController.createUser
             )
 
@@ -22,9 +20,7 @@ export class UsersRoutes extends CommonRoutes {
             .all((req: Request, res: Response, next: NextFunction) => {
                 next()
             })
-            .get((req: Request, res: Response) => {
-                res.status(200).send(`GET to users ${req.params.userId}`)
-            })
+            .get(userController.getUserById)
             .put((req: Request, res: Response) => {
                 res.status(200).send('PUT to users')
             })
@@ -34,7 +30,8 @@ export class UsersRoutes extends CommonRoutes {
             .delete((req: Request, res: Response) => {
                 res.status(200).send('DELETE to users')
             })
-
+        this.app.route('/users/first-name/:firstName')
+            .get(userController.getUserByFirstName)
         return this.app
     }
 }
